@@ -11,9 +11,16 @@
             android:label="main_fragment"
             tools:layout="@layout/main_fragment">
         <action android:id="@+id/action_nav_detail" app:destination="@id/detailFragment"/>
+        <action
+                android:id="@+id/action_nav_addPlayer"
+                app:destination="@id/addPlayerFragment" />
     </fragment>
     <fragment android:id="@+id/detailFragment" android:name="com.example.fifaplayerpotentials.ui.detail.DetailFragment"
-              android:label="fragment_detail" tools:layout="@layout/fragment_detail"/>
+              android:label="fragment_detail" tools:layout="@layout/fragment_detail">
+        <action
+                android:id="@+id/action_detail_nav_main"
+                app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
             android:id="@+id/splashFragment"
             android:name="com.example.fifaplayerpotentials.ui.splash.SplashFragment"
@@ -21,6 +28,15 @@
             tools:layout="@layout/fragment_splash" >
         <action
                 android:id="@+id/action_nav_main"
+                app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/addPlayerFragment"
+            android:name="com.example.fifaplayerpotentials.addPlayerFragment"
+            android:label="fragment_add_player"
+            tools:layout="@layout/fragment_add_player" >
+        <action
+                android:id="@+id/action_addPlayer_nav_main"
                 app:destination="@id/mainFragment" />
     </fragment>
 </navigation>
