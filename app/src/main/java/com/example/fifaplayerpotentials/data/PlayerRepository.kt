@@ -2,39 +2,55 @@ package com.example.fifaplayerpotentials.data
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
+import androidx.annotation.WorkerThread
 import com.example.fifaplayerpotentials.utilities.FileHelper
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import androidx.lifecycle.MutableLiveData
 import com.example.fifaplayerpotentials.LOG_TAG
+import kotlinx.coroutines.CoroutineScope
+import androidx.core.content.ContextCompat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Retrofit
 
 class PlayerRepository(val app: Application) {
 
     val playerData = MutableLiveData<List<Player>>()
 
-    private val listType = Types.newParameterizedType(List::class.java, Player::class.java)
+    private val playerDao = PlayerDatabase.getDatabase(app).playerDao()
 
     init {
-        val data = readDataFromFile()
-        if (data.isEmpty()) {
-            getPlayerData()
-        }
-        else {
-            playerData.value = data
+        CoroutineScope(Dispatchers.IO).launch {
+            val data = playerDao.getAll()
+            if (data.isEmpty()) {
+                getPlayerData()
+            }
+            else {
+                playerData.postValue(data)
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(app, "Using database", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 
-    fun getPlayerData() {
+    @WorkerThread
+    suspend fun getPlayerData() {
 
         val text = FileHelper.getTextFromAssets(app, "players.json")
 
-        val moshi = Moshi.Builder().build()
-        val adapter: JsonAdapter<List<Player>> = moshi.adapter(listType)
-
-        val playerList = adapter.fromJson(text) ?: emptyList()
-        saveDataToCache(playerList)
-        playerData.value = playerList
+        withContext(Dispatchers.Main) {
+            Toast.makeText(app, "Using json file", Toast.LENGTH_LONG).show()
+        }
+        val playerList = getMoshiAdapter().fromJson(text) ?: emptyList()
+        //saveDataToCache(playerList)
+        playerData.postValue(playerList)
+        playerDao.deleteAll()
+        playerDao.insertPlayers(playerList)
 
     }
 

@@ -1,6 +1,12 @@
 package com.example.fifaplayerpotentials.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "players")
 data class Player (
+    @PrimaryKey(autoGenerate = true)
+    val playerId: Int,
     var playerName : String,
     var squad : String,
     var potential : Int,
@@ -12,8 +18,7 @@ data class Player (
     var weakFoot : Int,
     var soldFor: Double,
     var sellOnClause: Double,
-    var transferredTo : String,
-    var imagePath : String,
-    var rating : Rating
+    var transferredTo : String
+    //var imagePath : String
 )
 
