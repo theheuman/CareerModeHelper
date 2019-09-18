@@ -1,0 +1,16 @@
+[
+  {
+    "playerName" : "Jacob",
+    "squad" : "Youth Squad",
+    "potential" : 99,
+    "overall" : 89,
+    "postion" : "CB",
+    "altPositions" : "RB, RM, ST, CF, CDM, CM, CAM",
+    "country" : "Sweden",
+    "skills" : 3,
+    "weakFoot" : 3,
+    "soldFor" : 0,
+    "sellOnClause" : 0,
+    "transferredTo" : "None"
+  }
+]

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true">
+
+    <ImageView
+            android:id="@+id/playerImage"
+            android:layout_width="64dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/face"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:contentDescription="PlayerHeadshot"
+            tools:ignore="HardcodedText" />
+
+    <TextView
+            android:id="@+id/nameText"
+            android:layout_width="246dp"
+            android:layout_height="30dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/playerImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Player" />
+
+
+    <RatingBar
+            android:id="@+id/skillsRatingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="8dp"
+            android:isIndicator="true"
+            app:layout_constraintBottom_toTopOf="@+id/skillsTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toEndOf="@+id/playerImage"
+            app:layout_constraintTop_toBottomOf="@+id/nameText"
+            app:layout_constraintVertical_bias="0.583" />
+
+    <TextView
+            android:id="@+id/weakFootTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="66dp"
+            android:layout_marginLeft="66dp"
+            android:layout_marginTop="4dp"
+            android:text="WF"
+            app:layout_constraintStart_toEndOf="@+id/skillsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/weakFootRatingBar" />
+
+    <RatingBar
+            android:id="@+id/weakFootRatingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="79dp"
+            android:layout_height="16dp"
+            android:isIndicator="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.093"
+            app:layout_constraintStart_toEndOf="@+id/skillsRatingBar"
+            app:layout_constraintTop_toBottomOf="@+id/nameText"
+            app:layout_constraintVertical_bias="0.214" />
+
+    <TextView
+            android:id="@+id/skillsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="4dp"
+            android:text="Skills"
+            app:layout_constraintStart_toEndOf="@+id/playerImage"
+            app:layout_constraintTop_toBottomOf="@+id/skillsRatingBar" />
+
+    <TextView
+            android:id="@+id/overallTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.205"
+            app:layout_constraintStart_toEndOf="@+id/weakFootRatingBar"
+            app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+    <TextView
+            android:id="@+id/potentialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/overallTextView"
+            app:layout_constraintTop_toBottomOf="@+id/overallTextView"
+            app:layout_constraintVertical_bias="0.111" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
