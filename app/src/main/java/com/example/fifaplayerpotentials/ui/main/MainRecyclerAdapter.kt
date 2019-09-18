@@ -58,6 +58,7 @@ class MainRecyclerAdapter(val context: Context, val players: List<Player>, val i
             holder.itemView.setOnClickListener() {
                 itemListener.onPlayerItemClick(player)
             }
+
         }
     }
 
@@ -75,5 +76,7 @@ class MainRecyclerAdapter(val context: Context, val players: List<Player>, val i
 
     interface PlayerItemListener {
         fun onPlayerItemClick(player: Player)
+
+        fun onAddPlayerClick()
     }
 }

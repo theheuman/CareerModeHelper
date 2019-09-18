@@ -56,4 +56,8 @@ class MainFragment : Fragment(), MainRecyclerAdapter.PlayerItemListener {
         Log.i(LOG_TAG, "Selected Player: ${player.playerName}")
     }
 
+    override fun onAddPlayerClick() {
+        navController.navigate(R.id.action_nav_addPlayer)
+    }
+
 }
