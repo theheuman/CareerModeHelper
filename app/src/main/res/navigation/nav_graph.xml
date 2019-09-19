@@ -32,7 +32,7 @@
     </fragment>
     <fragment
             android:id="@+id/addPlayerFragment"
-            android:name="com.example.fifaplayerpotentials.addPlayerFragment"
+            android:name="com.example.fifaplayerpotentials.ui.main.addPlayerFragment"
             android:label="fragment_add_player"
             tools:layout="@layout/fragment_add_player" >
         <action

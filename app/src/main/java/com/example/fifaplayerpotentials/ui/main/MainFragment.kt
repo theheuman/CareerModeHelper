@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.fifaplayerpotentials.ui.shared.SharedViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainFragment : Fragment(), MainRecyclerAdapter.PlayerItemListener {
@@ -23,6 +24,7 @@ class MainFragment : Fragment(), MainRecyclerAdapter.PlayerItemListener {
     private lateinit var viewModel: SharedViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var navController: NavController
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +47,11 @@ class MainFragment : Fragment(), MainRecyclerAdapter.PlayerItemListener {
         {
             val adapter = MainRecyclerAdapter(requireContext(), it, this)
             recyclerView.adapter = adapter
+        })
+
+        var fab = view.findViewById<FloatingActionButton>(R.id.floating_action_button)
+        fab.setOnClickListener(View.OnClickListener {
+            onAddPlayerClick()
         })
 
         return view
